@@ -1,6 +1,6 @@
 ***Tema Studiului Individual : Drone Repair Center, Reparații și închirieri drone.***
 
-Acestă aplicație folosește baza de date MySQL, pentru a rula cu succes este nevoie să rulați query-ul 'drone_repair.sql' din acest proiect pentru a crea baza de date, iar la necesitate, să configurați stringul de conectare aflat în Database.java
+Acestă aplicație folosește baza de date MySQL, pentru a rula cu succes este nevoie să rulați query-ul '[drone_repair.sql](drone_repair.sql)' din acest proiect pentru a crea baza de date, iar la necesitate, să configurați stringul de conectare aflat în Database.java
 
 **Notă.**
 Proiectul a fost realizat în 10 ore.
