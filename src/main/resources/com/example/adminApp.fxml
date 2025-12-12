@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.adminAppController">
+   <children>
+      <MenuBar layoutY="2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Chirie">
+            <items>
+              <MenuItem fx:id="drone_disponibile" mnemonicParsing="false" text="Drone disponibile" />
+                  <MenuItem fx:id="drone_inchiriate" mnemonicParsing="false" text="Drone inchiriate" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Reparatie">
+            <items>
+                  <MenuItem fx:id="waitingForClientResponse" mnemonicParsing="false" text="Drone sub confirmarea clientului" />
+              <MenuItem fx:id="drone_inreparatie" mnemonicParsing="false" text="Drone in reparatie" />
+                  <MenuItem fx:id="drone_reparate" mnemonicParsing="false" text="Drone reparate" />
+                  <MenuItem fx:id="drone_returnate" mnemonicParsing="false" text="Drone returnate" />
+                  <MenuItem fx:id="repairConfirm" mnemonicParsing="false" text="Confirmă reparații" />
+                  <MenuItem fx:id="updateRepair" mnemonicParsing="false" text="Actualizează o reparație" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Căutări">
+               <items>
+                  <MenuItem fx:id="searchButton" mnemonicParsing="false" text="Caută o dronă" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Pane fx:id="search" layoutX="15.0" layoutY="37.0" prefHeight="354.0" prefWidth="574.0">
+         <children>
+            <TextField fx:id="droneIdTextField" layoutX="14.0" layoutY="33.0" />
+            <Label layoutX="14.0" layoutY="6.0" text="Drone ID" />
+            <TextField fx:id="droneSerialTextField" layoutX="177.0" layoutY="34.0" />
+            <Label layoutX="177.0" layoutY="7.0" text="Drone Serial" />
+            <Label fx:id="searchResult" layoutX="20.0" layoutY="70.0">
+               <font>
+                  <Font size="30.0" />
+               </font></Label>
+            <Button fx:id="searchB" layoutX="336.0" layoutY="33.0" mnemonicParsing="false" text="Caută" />
+         </children>
+      </Pane>
+      <ScrollPane fx:id="scrollPane" layoutX="7.0" layoutY="37.0" prefHeight="335.0" prefWidth="584.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tableView" layoutY="-1.0" prefHeight="354.0" prefWidth="584.0">
+                    <columns>
+                      <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="colModel" prefWidth="95.0" text="Model" />
+                        <TableColumn fx:id="colSerial" prefWidth="116.0" text="Serial Number" />
+                        <TableColumn fx:id="colStatus" prefWidth="103.0" text="Status" />
+                        <TableColumn fx:id="colPrice" prefWidth="75.0" text="Pret" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Button layoutX="494.0" mnemonicParsing="false" onAction="#logout" text="Deconecteazăte" />
+      <Label fx:id="message" layoutX="351.0" layoutY="377.0" text="Dublu click pe dronă pentru a face modificări" />
+   </children>
+</Pane>

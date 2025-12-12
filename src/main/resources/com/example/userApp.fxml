@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.userAppController">
+   <children>
+      <MenuBar layoutY="2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Chirie">
+            <items>
+              <MenuItem fx:id="newc" mnemonicParsing="false" text="Inchiriază o dronă" />
+                  <MenuItem fx:id="updatec" mnemonicParsing="false" text="Vizualizare chirie" />
+                  <MenuItem fx:id="historyc" mnemonicParsing="false" text="Istorie Chirie" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Reparație">
+               <items>
+                  <MenuItem fx:id="newr" mnemonicParsing="false" text="Reparație nouă" />
+                  <MenuItem fx:id="acceptRepair" mnemonicParsing="false" text="Acceptă reparația" />
+                  <MenuItem fx:id="monitor" mnemonicParsing="false" text="Monitorizeză reparația" />
+               </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Drone">
+               <items>
+                  <MenuItem fx:id="addMyDrone" mnemonicParsing="false" text="Adaugă propria dronă" />
+                  <MenuItem fx:id="deleteMyDrone" mnemonicParsing="false" text="Șterge propria dronă" />
+                  <MenuItem fx:id="showMyDrones" mnemonicParsing="false" text="Afișează dronele proprii" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <ScrollPane fx:id="scrollPane" layoutX="14.0" layoutY="37.0" prefHeight="324.0" prefWidth="572.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tableView" prefHeight="324.0" prefWidth="572.0">
+                    <columns>
+                      <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="colModel" prefWidth="75.0" text="MODEL" />
+                        <TableColumn fx:id="colSerial" prefWidth="117.0" text="SERIAL NUMBER" />
+                        <TableColumn fx:id="colStatus" prefWidth="117.0" text="STATUS" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Button fx:id="confirm" layoutX="14.0" layoutY="366.0" mnemonicParsing="false" text="Confirm" />
+      <Label fx:id="message" alignment="CENTER_RIGHT" layoutX="213.0" layoutY="370.0" prefHeight="17.0" prefWidth="373.0" text="Apasati pe drona ce doriti sa o inchiriati apoi confirmati alegerea" />
+      <ScrollPane fx:id="scrollPane1" layoutX="14.0" layoutY="37.0" prefHeight="324.0" prefWidth="572.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="tableView1" prefHeight="324.0" prefWidth="572.0">
+                     <columns>
+                        <TableColumn fx:id="colId1" prefWidth="36.5" text="ID" />
+                        <TableColumn fx:id="colModel1" prefWidth="80.5" text="MODEL" />
+                        <TableColumn fx:id="colSerial1" prefWidth="118.5" text="SERIAL NUMBER" />
+                        <TableColumn fx:id="colPret1" prefWidth="117.0" text="PRET" />
+                        <TableColumn fx:id="colStart1" prefWidth="117.0" text="DATA START" />
+                        <TableColumn fx:id="colEnd1" prefWidth="117.0" text="DATA SFARSIT" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Button layoutX="500.0" mnemonicParsing="false" onAction="#logout" text="Deconecteazăte" />
+   </children>
+</Pane>
