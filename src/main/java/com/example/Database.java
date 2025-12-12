@@ -105,7 +105,7 @@ public class Database {
 
     public static void reloadDrones(){
         App.droneList.clear();
-        String query = "SELECT drones.id, drones.model, drones.serial_number, drones.status, drone_user.id_user, reparatii.cost FROM drones \r\n" + //
+        String query = "SELECT drones.id, drones.model, drones.serial_number, drones.status, drone_user.id_user, reparatii.cost, reparatii.descriere FROM drones \r\n" + //
                         "LEFT JOIN drone_user ON drone_user.id_drone = drones.id\r\n" + //
                         "LEFT JOIN reparatii ON reparatii.drone_id = drones.id";
         try(Connection conn = Database.connect();
@@ -119,7 +119,8 @@ public class Database {
                     rs.getString("serial_number"), 
                     rs.getString("status"),
                     rs.getInt("id_user"),
-                    rs.getInt("cost")
+                    rs.getInt("cost"),
+                    rs.getString("descriere")
                 ));
             }
         } catch (SQLException e) {
@@ -155,13 +156,17 @@ public class Database {
     public static void deletePersonalDrone(int id_drone){
         String query = "DELETE FROM drones WHERE id = ?";
         String query2 = "DELETE FROM drone_user WHERE id_drone = ?";
+        // String query3 = "DELETE FROM reparatii WHERE id_drone = ?";
         try(
             Connection conn = Database.connect();
             PreparedStatement ps = conn.prepareStatement(query);
             PreparedStatement ps2 = conn.prepareStatement(query2);
+            // PreparedStatement ps3 = conn.prepareStatement(query3);
         ){
+            // ps3.setInt(1, id_drone);
             ps2.setInt(1, id_drone);
             ps.setInt(1, id_drone);
+            // ps3.executeUpdate();
             ps2.executeUpdate();
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -240,4 +245,20 @@ public class Database {
             e.printStackTrace();
         }
     }
+
+
+    public static void deleteRepair(int drone_id){
+        String query = "DELETE FROM reparatii WHERE drone_id = "+drone_id;
+
+        try(Connection conn = Database.connect();
+            PreparedStatement ps = conn.prepareStatement(query)
+        ){
+            ps.executeUpdate();
+
+            Database.reloadReparatii();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

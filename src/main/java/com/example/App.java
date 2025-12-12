@@ -9,6 +9,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -32,56 +33,6 @@ public class App extends Application {
     public static ObservableList<User> userList = FXCollections.observableArrayList();
     public static User currentUser = null;
     public static Drone currentDrone = null;
-
-    
-    // private static SecretKey generateKey(String password, byte[] salt) throws Exception {
-    //     SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-    //     PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 256);
-    //     return new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
-    // }
-
-    // public static String encrypt(String plainText, String password) throws Exception {
-    //     byte[] salt = new byte[16];
-    //     byte[] iv = new byte[16];
-
-    //     SecureRandom random = new SecureRandom();
-    //     random.nextBytes(salt);
-    //     random.nextBytes(iv);
-
-    //     SecretKey key = generateKey(password, salt);
-    //     Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-
-    //     cipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(iv));
-    //     byte[] encrypted = cipher.doFinal(plainText.getBytes());
-
-    //     // Returnăm salt + iv + text criptat în Base64
-    //     byte[] combined = new byte[salt.length + iv.length + encrypted.length];
-    //     System.arraycopy(salt, 0, combined, 0, salt.length);
-    //     System.arraycopy(iv, 0, combined, salt.length, iv.length);
-    //     System.arraycopy(encrypted, 0, combined, salt.length + iv.length, encrypted.length);
-
-    //     return Base64.getEncoder().encodeToString(combined);
-    // }
-
-    // public static String decrypt(String base64, String password) throws Exception {
-    //     byte[] combined = Base64.getDecoder().decode(base64);
-
-    //     byte[] salt = new byte[16];
-    //     byte[] iv = new byte[16];
-    //     byte[] encrypted = new byte[combined.length - 32];
-
-    //     System.arraycopy(combined, 0, salt, 0, 16);
-    //     System.arraycopy(combined, 16, iv, 0, 16);
-    //     System.arraycopy(combined, 32, encrypted, 0, encrypted.length);
-
-    //     SecretKey key = generateKey(password, salt);
-
-    //     Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-    //     cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(iv));
-    //     byte[] decrypted = cipher.doFinal(encrypted);
-
-    //     return new String(decrypted);
-    // }
 
     private static final SecureRandom RANDOM = new SecureRandom();
     private static final String ALGO = "PBKDF2WithHmacSHA256";
@@ -135,11 +86,9 @@ public class App extends Application {
     @SuppressWarnings("static-access")
     @Override
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {        
-        
-        
-        
         this.stage = stage;
         scene = new Scene(loadFXML("login"));
+        
         try{
             Database.updateDronesAvailability();
             Database.reloadDrones();
@@ -148,15 +97,11 @@ public class App extends Application {
             Database.reloadUsers();
         }
         catch(Exception err){
+            err.printStackTrace();
             scene = new Scene(loadFXML("connectError"));
         }
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
-
 
         try {
-
             for (User user : App.userList) {
                 char[] pw = user.getPassword().toCharArray();
                 String stored = hashPassword(pw);
@@ -167,8 +112,16 @@ public class App extends Application {
             }
         } catch (Exception e) {
             System.out.println("ERROR LA CRIPTARE");
-            stage.close();
+            Platform.exit();
+            return;
         }
+
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+
+
+        
         
         //vasile
         //cozma1401
@@ -179,9 +132,11 @@ public class App extends Application {
 
         // Afisare in consola din tabelul User
         for(User user : userList){
-            System.out.println(user.getId());
-            System.out.println(user.getLogin());
-            System.out.println(user.getPassword());
+            System.out.println("---------------------Utilizatori-----------------------");
+            System.out.println("ID: "+user.getId());
+            System.out.println("LOGIN: "+user.getLogin());
+            System.out.println("PAROLA: "+user.getPassword());
+            System.out.println("--------------------------------------------");
         }
 
 
@@ -207,13 +162,15 @@ public class App extends Application {
 
         // Afisare in consola din tabelul Drones
         // for (Drone drone : droneList) {
+        //     System.out.println("--------------------------------------");
         //     System.out.println(drone.getId());
         //     System.out.println(drone.getModel());
         //     System.out.println(drone.getSerialNumber());
         //     System.out.println(drone.getStatus());
         //     System.out.println(drone.getUserId());
         //     System.out.println(drone.getPrice());
-        //     System.out.println();
+        //     System.out.println(drone.getDescriere());
+        //     System.out.println("--------------------------------------");
         // }
 
 

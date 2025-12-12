@@ -7,14 +7,16 @@ public class Drone {
     private String status;
     private int userId;
     private int price;
+    private String descriere;
 
-    public Drone(int id, String model, String serialNumber, String status, int userId, int price) {
+    public Drone(int id, String model, String serialNumber, String status, int userId, int price, String descriere) {
         this.id = id;
         this.model = model;
         this.serialNumber = serialNumber;
         this.status = status;
         this.userId = userId;
         this.price = price;
+        this.descriere = descriere;
     }
     public Drone(int id, String model, String serialNumber) {
         this.id = id;
@@ -50,6 +52,9 @@ public class Drone {
     }
     public int getPrice() {
         return price;
+    }
+    public String getDescriere() {
+       return descriere;
     }
     
 }

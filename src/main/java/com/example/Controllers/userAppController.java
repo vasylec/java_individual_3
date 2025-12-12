@@ -389,7 +389,7 @@ public class userAppController implements Initializable{
                 Drone drone = (Drone) tableView.getSelectionModel().getSelectedItem();
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Confirmare");
-                alert.setHeaderText("Ești sigur?");
+                alert.setHeaderText("Ești sigur? Prețul de reparație va fi: "+drone.getPrice());
                 alert.setContentText("Ești de acord cu condițiile reparării dronei : "+drone.getModel()+" ?");
 
                 alert.getButtonTypes().clear();
@@ -422,6 +422,8 @@ public class userAppController implements Initializable{
                         try{
                             Database.updateDroneStatus(drone.getId(), "personală");
                             Database.reloadDrones();
+
+                            Database.deleteRepair(drone.getId());
 
                             Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
                             alert2.setTitle("Informație");

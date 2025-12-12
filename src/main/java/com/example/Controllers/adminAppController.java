@@ -337,34 +337,54 @@ public class adminAppController implements Initializable{
 
 
 
-	
+	private String wrapWords(String text, int lineLength) {
+    StringBuilder sb = new StringBuilder();
+    int lineCount = 0;
+
+    for (String word : text.split(" ")) {
+
+        // Dacă cuvântul nu încape pe linia curentă → linie nouă
+        if (lineCount + word.length() > lineLength) {
+            sb.append("\n");
+            lineCount = 0;
+        }
+
+        // Adaugă cuvântul
+        sb.append(word).append(" ");
+        lineCount += word.length() + 1;
+    }
+
+    return sb.toString().trim();
+}
 
 
 	private int addPrice(Drone drone) {
-	TextInputDialog dialog = new TextInputDialog();
-	dialog.setTitle("Introduceți valoarea");
-	dialog.setHeaderText("Introduceți o singură valoare:");
-	dialog.setContentText("Valoare:");
+		String descriere = wrapWords(drone.getDescriere(), 75);	
 
-	Optional<String> result = dialog.showAndWait();
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Introduceți prețul");
+		dialog.setHeaderText("Descriere introdusă de client:\n\n" + descriere);
+		dialog.setContentText("Introduceți o singură valoare întreagă:");
 
-	if (result.isPresent()) {
+		Optional<String> result = dialog.showAndWait();
 
-	try {
-		return Integer.parseInt(result.get());
-	} catch (NumberFormatException e) {
-		Alert info = new Alert(Alert.AlertType.ERROR);
-		info.setTitle("EROARE");
-		info.setHeaderText("Prețul introdus este invalid !");
-		info.setContentText("Adaugă un preț doar din valori întregi !");
-		info.showAndWait();
-  
-		return addPrice(drone);   // Reîntoarcere dacă valoarea este invalidă
-	}
+		if (result.isPresent()) {
 
-	} else {
-		return -1;
-	}		
+		try {
+			return Integer.parseInt(result.get());
+		} catch (NumberFormatException e) {
+			Alert info = new Alert(Alert.AlertType.ERROR);
+			info.setTitle("EROARE");
+			info.setHeaderText("Prețul introdus este invalid !");
+			info.setContentText("Adaugă un preț doar din valori întregi !");
+			info.showAndWait();
+	
+			return addPrice(drone); 
+		}
+
+		} else {
+			return -1;
+		}		
 
 	}
 
