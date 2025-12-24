@@ -99,6 +99,15 @@ public class App extends Application {
         catch(Exception err){
             err.printStackTrace();
             scene = new Scene(loadFXML("connectError"));
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(
+                App.class.getResource("Style/style.css").toExternalForm()
+            );
+            stage.setTitle("Drone Rental Management - Eroare conectare BD");
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
+            return;
         }
 
         try {
@@ -115,6 +124,11 @@ public class App extends Application {
             Platform.exit();
             return;
         }
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(
+            App.class.getResource("Style/loginStyle.css").toExternalForm()
+        );
+        stage.setTitle("Drone Rental Management");
 
         stage.setResizable(false);
         stage.setScene(scene);

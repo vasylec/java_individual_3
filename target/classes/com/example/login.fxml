@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.LoginController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.LoginController">
    <children>
       <Label layoutX="129.0" layoutY="76.0" text="Drone Repair Center">
          <font>
@@ -15,8 +15,8 @@
          </font>
       </Label>
       <TextField fx:id="login" layoutX="226.0" layoutY="188.0" />
-      <PasswordField fx:id="pass" layoutX="225.0" layoutY="223.0" />
-      <Button fx:id="button" layoutX="277.0" layoutY="265.0" mnemonicParsing="false" text="Login" />
-      <Label fx:id="info" layoutX="240.0" layoutY="308.0" opacity="0.0" text="Parola sau login greșit" textFill="RED" />
+      <PasswordField fx:id="pass" layoutX="226.0" layoutY="237.0" />
+      <Button fx:id="button" layoutX="277.0" layoutY="283.0" mnemonicParsing="false" text="Login" />
+      <Label fx:id="info" layoutX="241.0" layoutY="336.0" opacity="0.0" text="Parola sau login greșit" textFill="RED" />
    </children>
 </Pane>

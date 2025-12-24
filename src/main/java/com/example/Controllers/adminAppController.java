@@ -126,6 +126,10 @@ public class adminAppController implements Initializable{
 		try {
 			Stage stage = (Stage) tableView.getScene().getWindow();
 			App.scene = new Scene(App.loadFXML("login"));
+			App.scene.getStylesheets().clear();
+			App.scene.getStylesheets().add(
+				App.class.getResource("Style/loginStyle.css").toExternalForm()
+			);
 
 			stage.setResizable(false);
 			stage.setScene(App.scene);

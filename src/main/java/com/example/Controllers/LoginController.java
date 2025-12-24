@@ -12,8 +12,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.Pane;
 
 public class LoginController implements Initializable{
 
@@ -25,6 +32,8 @@ public class LoginController implements Initializable{
     PasswordField pass;
     @FXML
     TextField login;
+    @FXML
+    Pane pane;
 
     private void infoResetOpacity(){
         info.setOpacity(0);
@@ -46,6 +55,22 @@ public class LoginController implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        
+        Image image = new Image(App.class.getResource("images/bg2.jpg").toExternalForm());
+
+        BackgroundImage bgImage = new BackgroundImage(
+            image,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundPosition.CENTER,
+            new BackgroundSize(
+                100, 100, true, true, true, false
+            )
+        );
+
+        pane.setBackground(new Background(bgImage));
+        
+        
         pass.setOnKeyPressed(e -> infoResetOpacity());
         login.setOnKeyPressed(e -> infoResetOpacity());
         
@@ -66,6 +91,10 @@ public class LoginController implements Initializable{
                 if(checkLogin(login.getText(),pass.getText()) == 2){
                     info.setOpacity(0);
                     try {
+                        App.scene.getStylesheets().clear();
+                        App.scene.getStylesheets().add(
+                            App.class.getResource("Style/style.css").toExternalForm()
+                        );
                         App.scene.setRoot(App.loadFXML("adminApp"));
                     } catch (IOException e1) {
                         e1.printStackTrace();
@@ -73,6 +102,10 @@ public class LoginController implements Initializable{
                 }
                 else if(checkLogin(login.getText(),pass.getText()) == 1){
                     try {
+                        App.scene.getStylesheets().clear();
+                        App.scene.getStylesheets().add(
+                            App.class.getResource("Style/style.css").toExternalForm()
+                        );
                         App.scene.setRoot(App.loadFXML("userApp"));
                     } catch (IOException e1) {
                         e1.printStackTrace();

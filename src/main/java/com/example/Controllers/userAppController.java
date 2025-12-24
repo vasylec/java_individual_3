@@ -177,6 +177,10 @@ public class userAppController implements Initializable{
         try {
             Stage stage = (Stage) tableView.getScene().getWindow();
             App.scene = new Scene(App.loadFXML("login"));
+            App.scene.getStylesheets().clear();
+            App.scene.getStylesheets().add(
+                App.class.getResource("Style/loginStyle.css").toExternalForm()
+            );
             
             stage.setResizable(false);
             stage.setScene(App.scene);
@@ -302,6 +306,10 @@ public class userAppController implements Initializable{
     
                     Stage stage = new Stage();
                     Scene scene = new Scene(App.loadFXML("confirmRent"));
+                    scene.getStylesheets().clear();
+                    scene.getStylesheets().add(
+                        App.class.getResource("Style/style.css").toExternalForm()
+                    );
     
                     stage.setResizable(false);
                     stage.setScene(scene);
@@ -360,6 +368,10 @@ public class userAppController implements Initializable{
 
                     Stage stage = new Stage();
                     Scene scene = new Scene(App.loadFXML("newRepair"));
+                    scene.getStylesheets().clear();
+                    scene.getStylesheets().add(
+                        App.class.getResource("Style/style.css").toExternalForm()
+                    );
     
                     stage.setResizable(false);
                     stage.setScene(scene);
@@ -456,6 +468,10 @@ public class userAppController implements Initializable{
                 Stage stage = new Stage();
                 Scene scene;
                 scene = new Scene(App.loadFXML("addDrone"));
+                scene.getStylesheets().clear();
+                scene.getStylesheets().add(
+                    App.class.getResource("Style/style.css").toExternalForm()
+                );
                 
                 stage.setResizable(false);
                 stage.setScene(scene);

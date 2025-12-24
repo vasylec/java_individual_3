@@ -1,0 +1,260 @@
+/* =========================================================
+   SUNSET DRONE UI – JavaFX CSS
+   Copy–Paste Ready
+   ========================================================= */
+
+/* ---------------- ROOT / BACKGROUND ---------------- */
+
+.root {
+    -fx-font-family: "Segoe UI", "Roboto", sans-serif;
+    -fx-background-color: linear-gradient(
+        from 0% 0% to 0% 100%,
+        #ffb347,
+        #ff8c42,
+        #8b4513,
+        #2b1b0e
+    );
+}
+
+/* ---------------- GENERIC PANES ---------------- */
+
+.anchor-pane, .border-pane, .stack-pane, .pane, .vbox, .hbox {
+    -fx-background-color: transparent;
+}
+
+/* ---------------- LABELS ---------------- */
+
+.label {
+    -fx-text-fill: #fff3e0;
+}
+
+
+
+/* ---------------- BUTTONS ---------------- */
+
+.button {
+    -fx-background-color: rgba(0,0,0,0.55);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-padding: 5 5;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 200, 120, 0.6);
+    -fx-border-width: 1.2;
+    -fx-cursor: hand;
+
+    -fx-transition: all 0.25s ease;
+}
+
+.button:hover {
+    -fx-background-color: rgba(255, 140, 66, 0.9);
+    -fx-effect: dropshadow(gaussian, rgba(255,140,66,0.8), 14, 0.5, 0, 0);
+}
+
+.button:pressed {
+    -fx-background-color: rgba(180, 90, 30, 1);
+}
+
+/* ---------------- TEXT INPUT ---------------- */
+
+.text-field, .password-field {
+    -fx-background-color: rgba(0,0,0,0.55);
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #ffd7b5;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: rgba(255, 200, 120, 0.6);
+    -fx-padding: 8 14;
+
+    -fx-transition: all 0.25s ease;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #ff8c42;
+    -fx-effect: dropshadow(gaussian, rgba(255,140,66,0.6), 10, 0.3, 0, 0);
+}
+
+/* ---------------- MENU BAR ---------------- */
+
+.menu-bar {
+    -fx-background-color: linear-gradient(
+        from 0% 0% to 0% 100%,
+        rgba(0,0,0,0.9),
+        rgba(30,15,5,0.95)
+    );
+    -fx-border-color: rgba(255, 180, 90, 0.4);
+    -fx-border-width: 0 0 1 0;
+}
+
+.menu-bar .label {
+    -fx-text-fill: #ffd7b5;
+    -fx-font-weight: bold;
+}
+
+.menu:hover, .menu:showing {
+    -fx-background-color: rgba(255, 140, 66, 0.6);
+}
+
+/* ---------------- CONTEXT MENU ---------------- */
+
+.context-menu {
+    -fx-background-color: rgba(0,0,0,0.95);
+    -fx-border-color: rgba(255, 180, 90, 0.6);
+}
+
+.menu-item {
+    -fx-padding: 8 20;
+}
+
+.menu-item .label {
+    -fx-text-fill: #fff3e0;
+}
+
+.menu-item:hover {
+    -fx-background-color: rgba(255, 140, 66, 0.8);
+}
+
+/* ---------------- LIST VIEW ---------------- */
+
+.list-view {
+    -fx-background-color: rgba(0,0,0,0.5);
+    -fx-border-color: rgba(255, 200, 120, 0.5);
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10;
+
+    -fx-transition: all 0.2s ease;
+}
+
+.list-cell:hover {
+    -fx-background-color: rgba(255, 140, 66, 0.4);
+}
+
+.list-cell:selected {
+    -fx-background-color: rgba(255, 140, 66, 0.8);
+    -fx-text-fill: #000000;
+}
+
+/* ---------------- TABLE VIEW ---------------- */
+
+.table-view {
+    -fx-background-color: rgba(0,0,0,0.2);
+    -fx-border-color: black;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: rgba(0,0,0,0.7);
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: rgba(255, 140, 66, 0.3);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(255, 140, 66, 0.7);
+}
+
+/* ---------------- COMBO BOX ---------------- */
+
+.combo-box {
+    -fx-background-color: rgba(0,0,0,0.55);
+    -fx-border-color: rgba(255, 200, 120, 0.6);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: rgba(0,0,0,0.95);
+}
+
+/* ---------------- CHECKBOX ---------------- */
+
+.check-box {
+    -fx-text-fill: #fff3e0;
+}
+
+.check-box .box {
+    -fx-background-color: rgba(0,0,0,0.6);
+    -fx-border-color: rgba(255, 200, 120, 0.7);
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #ff8c42;
+}
+
+/* ---------------- RADIO BUTTON ---------------- */
+
+.radio-button {
+    -fx-text-fill: #fff3e0;
+}
+
+.radio-button .radio {
+    -fx-background-color: rgba(0,0,0,0.6);
+    -fx-border-color: rgba(255, 200, 120, 0.7);
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: #ff8c42;
+}
+
+/* ---------------- SLIDER ---------------- */
+
+.slider .track {
+    -fx-background-color: rgba(255, 200, 120, 0.4);
+}
+
+.slider .thumb {
+    -fx-background-color: #ff8c42;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 6, 0.4, 0, 1);
+}
+
+/* ---------------- PROGRESS BAR ---------------- */
+
+.progress-bar .track {
+    -fx-background-color: rgba(0,0,0,0.6);
+}
+
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(
+        to right,
+        #ffb347,
+        #ff8c42,
+        #ff6f00
+    );
+    -fx-background-radius: 20;
+}
+
+/* ---------------- SCROLL BAR ---------------- */
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(255, 140, 66, 0.7);
+    -fx-background-radius: 10;
+}
+
+/* ---------------- TOOLTIP ---------------- */
+
+.tooltip {
+    -fx-background-color: rgba(0,0,0,0.95);
+    -fx-text-fill: #ffd7b5;
+    -fx-font-size: 12px;
+    -fx-background-radius: 10;
+    -fx-padding: 8;
+}
