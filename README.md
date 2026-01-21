@@ -20,7 +20,7 @@ Proiectul a fost realizat în 10 ore.
 
 
 
-***Video***
+***VIDEO***
 
 
 ***[![Demo aplicație](https://img.youtube.com/vi/gAkrwpgposU/0.jpg)](https://www.youtube.com/watch?v=gAkrwpgposU)***
